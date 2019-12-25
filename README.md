@@ -2,8 +2,8 @@
 
 A little app to flip some image tiles. Inspired by [this tweet](https://twitter.com/humeursdevictor/status/1181919227294433282) from [@humeursdevictor](https://twitter.com/humeursdevictor).
 
-![america](sample/america.jpg)
-![fliped_america](sample/fliped_america.jpg)
+|![america](sample/america.jpg)|![fliped_america](sample/fliped_america.jpg)|
+|--|--|
 
 ## Build Docker image
 
