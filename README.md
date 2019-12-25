@@ -11,4 +11,4 @@ A little app to flip some image tiles. Inspired by [this tweet](https://twitter.
 
 ## Run web app
 
-`docker container run --rm -p 8501:8501 upside_down` and open your browser at `0.0.0.0:8501` :smile:.
+`docker container run --rm -p 8501:8501 upside_down` and open your browser at `0.0.0.0:8501`.
