@@ -9,6 +9,12 @@ A little app to flip some image tiles. Inspired by [this tweet](https://twitter.
 
 `docker build -t upside_down .`
 
-## Run web app
+## Run with the web app
 
 `docker container run --rm -p 8501:8501 upside_down` and open your browser at `0.0.0.0:8501`.
+
+## Run in command line
+
+`docker container run --rm -v $(pwd)/app upside_down python main.py <source_image> <destination_image> <tile_shape>`
+
+> Example : `docker container run --rm -v $(pwd)/app upside_down python main.py sample/america.jpg sample/fliped_image 25`
