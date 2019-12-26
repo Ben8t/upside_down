@@ -8,4 +8,4 @@ COPY . /app
 
 WORKDIR /app
 
-ENTRYPOINT ["streamlit", "run", "app.py"]
+CMD ["streamlit", "run", "app.py"]

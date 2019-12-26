@@ -1,8 +1,17 @@
+"""utils.py"""
 import numpy
 import cv2
 
 
 def flip_image_tiles(image, tile_shape):
+    """Flip image tiles
+
+    Args:
+        image (io.BytesIO): image buffer
+        tile_shape (int): size of tiles
+    Returns:
+        (numpy.ndarray): image with fliped tiles
+    """
     image = cv2.imdecode(numpy.frombuffer(image.read(), numpy.uint8), 1)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     fliped_tiles = []
