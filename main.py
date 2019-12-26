@@ -2,6 +2,8 @@
 import argparse
 import numpy
 import cv2
+import io
+from src.utils import flip_image_tiles
 
 if __name__ == "__main__":
     arg_parser = argparse.ArgumentParser(description="Upside Down images.")
@@ -9,14 +11,11 @@ if __name__ == "__main__":
     arg_parser.add_argument("destination_image", help="Transformerd image file path.")
     arg_parser.add_argument("tile_shape", type=int, help="Tile shape (will be a square)")
     args = arg_parser.parse_args()
-    tile_shape = args.tile_shape
 
-    image = cv2.imread(args.original_image)
-    fliped_tiles = []
-    for row in range(0, image.shape[0], tile_shape):
-        for col in range(0, image.shape[1], tile_shape):
-            tile = image[row:row + tile_shape, col:col + tile_shape, :]
-            fliped_tile = numpy.flip(tile, (0,1))  # only flip x and y axis
-            image[row:row + tile_shape, col:col + tile_shape, :] = fliped_tile
+    with open(args.original_image, "rb") as image_stream:
+        image_buffer = io.BytesIO(image_stream.read())
+        fliped_image = flip_image_tiles(image_buffer, args.tile_shape)
 
-    cv2.imwrite(args.destination_image, image)
+    image_to_write = cv2.cvtColor(fliped_image, cv2.COLOR_RGB2BGR)
+    cv2.imwrite(args.destination_image, image_to_write)
+
